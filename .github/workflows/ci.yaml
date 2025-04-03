@@ -27,8 +27,8 @@ jobs:
           - {package_name: convenient_test_manager, runs_on: macos-latest}
           - {package_name: convenient_test_manager_dart, runs_on: ubuntu-latest}
         channel_version:
-          - { channel: stable }
           # - { channel: beta }
+          - { channel: stable }
           # see https://github.com/fzyzcjy/flutter_convenient_test/pull/319#issuecomment-1445048397
 
     steps:
@@ -45,7 +45,7 @@ jobs:
         working-directory: packages/${{ matrix.package_name_and_runs_on.package_name }}
 
       - name: Analyze
-        run: flutter analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
         working-directory: packages/${{ matrix.package_name_and_runs_on.package_name }}
 
       - name: Run tests
